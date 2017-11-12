@@ -1,0 +1,18 @@
+.show-numbers {
+	text-align: center;
+}
+
+.show-numbers > span {
+	display: inline-block;
+	padding: 10px 15px;
+	background: #eaeaea;
+	border: solid 1px #d2d2d2;
+	margin: 2px 5px;
+	font-size: 40px;
+	color: #333;
+	font-family: sans-serif;
+}
+.show-numbers > span:last-child {
+	border-color : #777;
+
+}
