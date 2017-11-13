@@ -15,8 +15,20 @@
 
 		function setup() {
 			settings.input = $(settings.input);
-			settings.output.html('<div class="show-numbers"></div>');
+			
 			settings.output.attr('data-val', '');
+			if(hasTouchscreen()) {
+				settings.output.html('<div class="show-numbers"><input type="number" class="input-numbers" /></div>');
+				settings.input.keyup( processKeyTouchscreen );
+			} else {
+				settings.output.html('<div class="show-numbers"></div>');
+				settings.input.keyup( processKey );
+			}
+			
+		}
+
+		function processKeyTouchscreen(e) {
+			settings.output.attr('data-val', settings.output.find('.input-numbers').val());
 		}
 
 		function processKey(e) {
@@ -66,10 +78,12 @@
 			return numbers.join('');
 		}
 
+		function hasTouchscreen() { 
+			var hasTouchscreen = 'ontouchstart' in window;
+			return hasTouchscreen ? true : false;
+		}
 		function main() {
 			setup();
-			settings.input.keyup( processKey );
-
 		}
 
 		main();
